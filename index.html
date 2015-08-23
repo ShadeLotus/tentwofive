@@ -70,7 +70,7 @@
 			}
 
 			.main {
-				width: 50%;
+				width: 100%;
 				margin: auto;
 				padding: 0;
 				float: none;
@@ -85,6 +85,10 @@
 		    .control {
 			    width: 100%;
 			    height: 50px;
+		    }
+
+		    .counter {
+			    font-size: 20pt;
 		    }
 		}
 
@@ -133,8 +137,14 @@
 		var primaryTimer = new ProgressBar.Circle(primaryCircle, {
 				duration: 100,
 				color: runColor,
-				trailColor: "#ddd"
+				trailColor: "#ddd",
+				text: {
+					style: {
+						fontSize: '40pt'
+					}
+				}
 			});
+
 
 		var updateFavico = function() {
 
