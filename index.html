@@ -36,6 +36,10 @@
 			width: 100px;
 		}
 
+		.container {
+			width: 100%;
+		}
+
 		.main {
 			float: left;
 			width: 60%;
@@ -52,6 +56,37 @@
 			display: block;
 		}
 
+		.show-phone {
+			display: none;
+		}
+
+		@media (max-device-width: 800px) {
+			.hide-phone {
+				display: none;
+			}
+
+			.show-phone {
+				display: block;
+			}
+
+			.main {
+				width: 50%;
+				margin: auto;
+				padding: 0;
+				float: none;
+			}
+
+			.sidebar {
+				width: 100%;
+				padding: 0;
+				float: none;
+		    }
+
+		    .control {
+			    width: 100%;
+			    height: 50px;
+		    }
+		}
 
 	</style>
 
@@ -61,18 +96,20 @@
 	<script src="piecon.js"></script>
 </head>
 <body>
-	<div class="counter">Cycle: <span id="cycle-counter">1</span></div>
-	<div class="main">
-		<div class="progress-circle progress-circle--primary" id="primary-circle"></div>
-		<div class="notice">A bell sound plays after each cycle unless you mute it.</div>
-	</div>
-	<div class="sidebar">
-		<textarea class="todo-list" placeholder="To Do..."></textarea>
-		<button onClick="reset()" class="reset-button">Reset</button>
-		<button onClick="pause()" id="pause-button" class="mute-button">Pause</button>
-		<button onClick="unpause()" id="unpause-button" class="unmute-button">Unpause</button>
-		<button onClick="mute()" id="mute-button" class="mute-button">Mute</button>
-		<button onClick="unmute()" id="unmute-button" class="unmute-button">Unmute</button>
+	<div class="container">
+		<div class="counter">Cycle: <span id="cycle-counter">1</span></div>
+		<div class="main">
+			<div class="progress-circle progress-circle--primary" id="primary-circle"></div>
+			<div class="notice">A bell sound plays after each cycle unless you mute it.</div>
+		</div>
+		<div class="sidebar">
+			<textarea class="todo-list hide-phone" placeholder="To Do..."></textarea>
+			<button onClick="reset()" class="control reset-button">Reset</button>
+			<button onClick="pause()" id="pause-button" class="control mute-button">Pause</button>
+			<button onClick="unpause()" id="unpause-button" class="control unmute-button">Unpause</button>
+			<button onClick="mute()" id="mute-button" class="control mute-button">Mute</button>
+			<button onClick="unmute()" id="unmute-button" class="control unmute-button">Unmute</button>
+		</div>
 	</div>
 	<script>
 		var primaryCircle = document.getElementById('primary-circle'),
