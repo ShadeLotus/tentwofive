@@ -1,1 +1,196 @@
-coming soon
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>The HTML5 Herald</title>
+	<meta name="description" content="The HTML5 Herald">
+	<meta name="author" content="SitePoint">
+
+	<style>
+		body {
+			width:800px;
+			margin: auto;
+		}
+
+		div {
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		.unmute-button {
+			display: none;
+		}
+
+		.mute-button,
+		.reset-button {
+			display: block;
+		}
+
+		.mute-button ,
+		.unmute-button ,
+		.reset-button {
+			margin: auto;
+			width: 100px;
+		}
+
+		.main {
+			float: left;
+			width: 60%;
+		}
+
+		.sidebar {
+			width: 40%;
+			float: right;
+		}
+
+		.todo-list  {
+			height: 300px;
+			margin: 50px auto 20px;
+			display: block;
+		}
+
+
+	</style>
+
+	<script src="bower_components/progressbar.js/dist/progressbar.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/favico.js/favico.js"></script>
+	<script src="piecon.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="progress-circle progress-circle--primary" id="primary-circle"></div>
+	</div>
+	<div class="sidebar">
+		<textarea class="todo-list" placeholder="To Do..."></textarea>
+		<button onClick="reset()" class="reset-button">Reset</button>
+		<button onClick="mute()" id="mute-button" class="mute-button">Mute</button>
+		<button onClick="unmute()" id="unmute-button" class="unmute-button">Unmute</button>
+	</div>
+	<script>
+		var primaryCircle = document.getElementById('primary-circle'),
+		    runTime = 10 * 60, // 10 minutes
+			breakTime = 2 * 60, // 2 minutes...
+//			runTime = 10, // 10 minutes
+//			breakTime = 10, // 2 minutes...
+			runColor = '#700',
+			breakColor = '#070',
+			timer = 0,
+			primaryInterval,
+			progress = 0,
+			onBreak = 0,
+			muted = 0,
+			title = document.title;
+
+		var bellSound = new Audio('bell.mp3');
+
+		var primaryTimer = new ProgressBar.Circle(primaryCircle, {
+				duration: 100,
+				color: runColor,
+				trailColor: "#ddd"
+			});
+
+		var updateFavico = function() {
+
+			Piecon.setProgress(Math.floor(progress * 100));
+		};
+
+		var updateTitle = function() {
+			document.title = getFormattedTime() + ' ' + title;
+		};
+
+		var animateTimerProgress = function() {
+			primaryTimer.animate(progress, function() {
+				primaryTimer.setText(getFormattedTime());
+			});
+		};
+
+		var getFormattedTime = function() {
+			if (onBreak) {
+				return moment().minutes(0).seconds(breakTime - timer).format('m:ss');
+			} else {
+				return moment().minutes(0).seconds(runTime - timer).format('m:ss');
+			}
+		};
+
+		var updateProgress = function() {
+			if (onBreak) {
+				progress = 1 - ((breakTime - timer) / breakTime);
+			} else {
+				progress = timer / runTime;
+			}
+		};
+
+		var reset = function() {
+			timer = 0;
+			onBreak = 0;
+			progress = 0;
+			setColorOptions(runColor);
+			animateTimerProgress();
+			initInterval();
+		};
+
+		var advanceTimer = function(){
+			if (onBreak) {
+				timer--;
+			} else {
+				timer++;
+			}
+			updateProgress();
+			manageBreakTime();
+		};
+
+		var setColorOptions = function(color) {
+			Piecon.setOptions({ color: color });
+			primaryTimer.path.setAttribute('stroke', color);
+			primaryTimer.text.style.color = color;
+		};
+
+		var manageBreakTime = function() {
+			if (timer <= 0) {
+				onBreak = 0;
+				timer = 0;
+				setColorOptions(runColor);
+				playSound();
+			} else if (timer >= runTime) {
+				onBreak = 1;
+				timer = breakTime;
+				setColorOptions(breakColor);
+				playSound();
+			}
+		};
+
+		var playSound = function() {
+			if (!muted) {
+				bellSound.play();
+			}
+		};
+
+		var mute = function() {
+			muted = true;
+			document.getElementById('mute-button').style.display = 'none';
+			document.getElementById('unmute-button').style.display = 'block';
+		};
+
+		var unmute = function() {
+			muted = false;
+			document.getElementById('unmute-button').style.display = 'none';
+			document.getElementById('mute-button').style.display = 'block';
+		};
+
+		var initInterval = function() {
+			clearInterval(primaryInterval);
+			primaryInterval = setInterval(function(){
+				advanceTimer();
+				animateTimerProgress();
+				updateFavico();
+				updateTitle();
+			}, 1000);
+		};
+
+		initInterval();
+	</script>
+</body>
+</html>

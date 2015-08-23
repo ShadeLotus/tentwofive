@@ -1,0 +1,20 @@
+{
+  "name": "tentwofive",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ShadeLotus/tentwofive",
+  "authors": [
+    "Chad Furman <chad@chadfurman.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "progressbar.js": "~0.9.0",
+    "moment": "~2.10.6"
+  }
+}
