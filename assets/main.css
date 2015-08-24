@@ -45,6 +45,18 @@ div {
     display: none;
 }
 
+.social-button-container {
+    width: 100px;
+    margin: auto;
+    padding: 0;
+}
+
+.social-button-container > * {
+    width: 100%;
+    display: block;
+    margin: 5px;
+}
+
 @media (max-width: 800px), (max-device-width: 800px) {
     .container {
         width: 100%;

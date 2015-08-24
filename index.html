@@ -16,6 +16,7 @@
 	<div class="main">
 		<div class="progress-circle progress-circle--primary" id="primary-circle"></div>
 		<div class="notice">A bell sound plays after each cycle unless you mute it.</div>
+		<div class="notice"><a href="http://www.43folders.com/2005/10/11/procrastination-hack-1025">Original blog post on this procrastination hack</a></div>
 	</div>
 	<div class="sidebar">
 		<textarea class="todo-list hide-phone" placeholder="To Do..."></textarea>
@@ -24,8 +25,19 @@
 		<button onClick="unpause()" id="unpause-button" class="control unmute-button">Unpause</button>
 		<button onClick="mute()" id="mute-button" class="control mute-button">Mute</button>
 		<button onClick="unmute()" id="unmute-button" class="control unmute-button">Unmute</button>
+		<!-- Place this tag where you want the button to render. -->
+		<div class="social-button-container">
+			<a href="https://twitter.com/share" class="control twitter-share-button" data-via="chadfurman">Tweet</a>
+		</div>
+		<div class="social-button-container">
+			<a href="https://twitter.com/chadfurman" class="control twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @chadfurman</a>
+		</div>
+		<div class="social-button-container">
+			<a class="control github-button" href="https://github.com/ShadeLotus" data-count-href="/ShadeLotus/followers" data-count-api="/users/ShadeLotus#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @ShadeLotus on GitHub">Follow</a>
+		</div>
 	</div>
 </div>
 <script src="scripts.js?v=2015082301"></script>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
