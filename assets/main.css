@@ -96,4 +96,15 @@ div {
     .counter {
         font-size: 20pt;
     }
+
+    .social-button-container {
+        width: 30%;
+        margin: 70px auto;
+        display: inline-block;
+    }
+
+    .social-button-container > * {
+        width: auto;
+        margin: auto;
+    }
 }
