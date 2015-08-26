@@ -25,6 +25,10 @@ div {
     margin: auto;
 }
 
+.interval-controls {
+    display: none;
+}
+
 .main {
     float: left;
     width: 60%;

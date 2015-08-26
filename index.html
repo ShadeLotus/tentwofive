@@ -16,15 +16,28 @@
 	<div class="main">
 		<div class="progress-circle progress-circle--primary" id="primary-circle"></div>
 		<div class="notice">A bell sound plays after each cycle unless you mute it.</div>
+		<div class="notice hide-phone">The tab icon is animated for pinning.</div>
 		<div class="notice hide-phone"><a target="_blank" href="http://www.43folders.com/2005/10/11/procrastination-hack-1025">Original blog post on this procrastination hack</a></div>
 	</div>
 	<div class="sidebar">
 		<textarea class="todo-list hide-phone" placeholder="To Do..."></textarea>
-		<button onClick="reset()" class="control reset-button">Reset</button>
+		<button onClick="reset()" class="control reset-button">Reset Cycle</button>
 		<button onClick="pause()" id="pause-button" class="control mute-button">Pause</button>
 		<button onClick="unpause()" id="unpause-button" class="control unmute-button">Unpause</button>
 		<button onClick="mute()" id="mute-button" class="control mute-button">Mute</button>
 		<button onClick="unmute()" id="unmute-button" class="control unmute-button">Unmute</button>
+		<div id="interval-controls" class="interval-controls">
+			<div>
+				<label for="break-time">Break</label>
+				<input type="text" name="break" id="break-time" value="">
+			</div>
+			<div>
+				<label for="run-time">Run</label>
+				<input type="text" name="run" id="run-time" value="">
+			</div>
+			<button onClick="saveChangesAndHideControls()" id="hide-interval-controls" class="hide-interval-controls">Save Changes</button>
+		</div>
+		<button onClick="displayIntervalControls()" id="display-interval-controls" class="display-interval-controls">Change Interval</button>
 		<!-- Place this tag where you want the button to render. -->
 		<div class="social-button-container">
 			<a href="https://twitter.com/share" class="control twitter-share-button" data-text="Productivity tool based on the 10-2-5 technique" data-via="chadfurman">Tweet</a>

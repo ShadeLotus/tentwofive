@@ -60,7 +60,6 @@ var updateProgress = function() {
 };
 
 var reset = function() {
-	cycleCounter = 1;
 	timer = 0;
 	onBreak = 0;
 	progress = 0;
@@ -139,6 +138,21 @@ var unpause = function() {
 	document.getElementById('unpause-button').style.display = 'none';
 	document.getElementById('pause-button').style.display = 'block';
 };
+
+var displayIntervalControls = function() {
+	document.getElementById('run-time').value = runTime / 60;
+	document.getElementById('break-time').value = breakTime / 60;
+	document.getElementById('interval-controls').style.display = 'block';
+	document.getElementById('display-interval-controls').style.display = 'none';
+};
+
+var saveChangesAndHideControls = function() {
+	runTime = parseInt(document.getElementById('run-time').value) * 60;
+	breakTime = parseInt(document.getElementById('break-time').value) * 60;
+	document.getElementById('interval-controls').style.display = 'none';
+	document.getElementById('display-interval-controls').style.display = 'inline-block';
+};
+
 
 var startInterval = function() {
 	clearInterval(primaryInterval);
