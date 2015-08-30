@@ -8,7 +8,7 @@
 	<meta name="description" content="A productivity tool based off the (10+2)*5 technique.">
 	<meta name="author" content="Chad Furman">
 
-	<link rel="stylesheet" href="styles.css?v=2015082401" />
+	<link rel="stylesheet" href="styles.css?v=2015082901" />
 </head>
 <body>
 <div class="container">
@@ -26,7 +26,7 @@
 		<button onClick="unpause()" id="unpause-button" class="control unmute-button">Unpause</button>
 		<button onClick="mute()" id="mute-button" class="control mute-button">Mute</button>
 		<button onClick="unmute()" id="unmute-button" class="control unmute-button">Unmute</button>
-		<div id="interval-controls" class="interval-controls">
+		<div id="interval-controls" class="control interval-controls">
 			<div>
 				<label for="break-time">Break</label>
 				<input type="text" name="break" id="break-time" value="">
@@ -35,23 +35,16 @@
 				<label for="run-time">Run</label>
 				<input type="text" name="run" id="run-time" value="">
 			</div>
-			<button onClick="saveChangesAndHideControls()" id="hide-interval-controls" class="hide-interval-controls">Save Changes</button>
+			<button onClick="saveChangesAndHideControls()" id="hide-interval-controls" class="control hide-interval-controls">Save Changes</button>
 		</div>
-		<button onClick="displayIntervalControls()" id="display-interval-controls" class="display-interval-controls">Change Interval</button>
+		<button onClick="displayIntervalControls()" id="display-interval-controls" class="control display-interval-controls">Change Interval</button>
 		<!-- Place this tag where you want the button to render. -->
-		<div class="social-button-container">
-			<a href="https://twitter.com/share" class="control twitter-share-button" data-text="Productivity tool based on the 10-2-5 technique" data-via="chadfurman">Tweet</a>
-		</div>
-		<div class="social-button-container">
-			<a href="https://twitter.com/chadfurman" class="control twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @chadfurman</a>
-		</div>
-		<div class="social-button-container">
-			<a class="control github-button" href="https://github.com/ShadeLotus" data-count-href="/ShadeLotus/followers" data-count-api="/users/ShadeLotus#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @ShadeLotus on GitHub">Follow</a>
-		</div>
+		<a class="control" href="https://twitter.com/share?url=http://chads.website/tentwofive&via=chadfurman&related=ionic%2Chtml5%2chybrid%20apps&hashtags=ionic%2Chtml5%2chybrid%20apps&text=Mobile%20app%20development%20is%20more%20fun%20in%20just%20HTML%20and%20Javascript"> Tweet </a>
+		<a class="control" href="https://twitter.com/chadfurman">Twitter</a>
+		<a class="control" href="https://github.com/shadelotus/tentwofive/tree/gh-pages">Github</a>
 		<div class="notice show-phone"><a target="_blank" href="http://www.43folders.com/2005/10/11/procrastination-hack-1025">Original blog post on this procrastination hack</a></div>
 	</div>
 </div>
-<script src="scripts.js?v=2015082401"></script>
-<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+<script src="scripts.js?v=2015082901"></script>
 </body>
 </html>
